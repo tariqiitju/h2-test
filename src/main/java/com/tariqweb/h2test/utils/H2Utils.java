@@ -1,9 +1,7 @@
 package com.tariqweb.h2test.utils;
 
-import org.h2.expression.function.DateTimeFunction;
-import org.h2.expression.function.Function1;
-import org.h2.expression.function.Function2;
-import org.h2.expression.function.FunctionN;
+
+import org.h2.expression.function.Function;
 
 import java.lang.reflect.Field;
 import java.sql.Date;
@@ -14,11 +12,10 @@ import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import java.util.Map;
-import java.util.function.Function;
 
 
 public class H2Utils {
-    public static long daysBetween(OffsetDateTime t1, OffsetDateTime t2) {
+    public static long daysBetween(Timestamp t1, Timestamp t2) {
         return ChronoUnit.DAYS.between(t1.toInstant(), t2.toInstant());
     }
 
@@ -68,9 +65,12 @@ public class H2Utils {
     @SuppressWarnings("rawtypes")
     public static int removeDateDifference() {
         try {
-//            Field field = Function.class.getDeclaredField("FUNCTIONS_BY_NAME");
 
-            Field field = FunctionN.class.getDeclaredField("FUNCTIONS_BY_NAME");
+            Field field = Function.class.getDeclaredField("FUNCTIONS_BY_NAME");
+//            Field field = FunctionN.class.getDeclaredField("FUNCTIONS_BY_NAME");
+
+//            Field field = org.h2.expression.function.JavaFunction.class.getDeclaredField("FUNCTIONS_BY_NAME");
+//            Field field = org.h2.expression.function.JavaFunction.class.getDeclaredField("FUNCTIONS");
             field.setAccessible(true);
             ((Map)field.get(null)).remove("DATEDIFF");
         } catch (Exception e) {

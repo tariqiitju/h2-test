@@ -30,7 +30,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-log4j2")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	implementation("com.h2database:h2")
+	implementation("com.h2database:h2:1.4.200")
+//	implementation("com.h2database:h2:2.0.204")
 	annotationProcessor("org.projectlombok:lombok")
 	//fastxml jackson dependencies
 	implementation("com.fasterxml.jackson.core:jackson-databind")

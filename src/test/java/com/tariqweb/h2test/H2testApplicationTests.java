@@ -121,7 +121,7 @@ class H2testApplicationTests {
 	(last_updated),
 	(last_updated_local),
 	(last_updated_local_date),
-	DATEDIFFX(member_since, create_time) as days_since_joining
+	DATEDIFF(member_since, create_time) as days_since_joining
 	FROM people
 	WHERE id = 1
 	"""
